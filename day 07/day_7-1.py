@@ -1,3 +1,17 @@
+'''
+
+Advent of Code 2020
+
+--- Day 7: Handy Haversacks --- see https://adventofcode.com/2020/day/7
+
+---Part One---
+
+Status: Functional
+
+Agenda: Data Structure Cleanup (List-> Sets?)
+
+'''
+
 import string
 from copy import deepcopy
 
@@ -6,7 +20,7 @@ from copy import deepcopy
 ###
 
 input_string = open("input.txt", "r").read()
-#input_string = open("example2.txt", "r").read()
+#input_string = open("example.txt", "r").read()
 
 ###
 ### FUNCTIONS
@@ -55,7 +69,7 @@ def get_master_dict(rules):
             # merge current grandchildren into that list of children
             # eliminate duplicats
 
-            descendants_to_add = [next_descendants[i] for i in range(len(next_descendants)) if next_descendants[i] not in all_descendants_of[outer_color] and not next_descendants[i]=='']
+            descendants_to_add = [next_descendants[i] for i in range(len(next_descendants)) if not next_descendants[i] in all_descendants_of[outer_color] and not next_descendants[i] == '']
             all_descendants_of[outer_color].extend(descendants_to_add)
 
             #go to next descendant and break if it doesn't exist

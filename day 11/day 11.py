@@ -1,4 +1,18 @@
+'''
+
+Advent of Code 2020
+
+--- Day 11: Seating System --- see https://adventofcode.com/2020/day/11
+
+Status: Solved
+Agenda: Efficiency. It's far too slow.
+
+'''
+
+
 from copy import deepcopy
+
+### INPUT ###
 
 #input_string= open("example.txt").read()
 input_string= open("input.txt").read()
@@ -6,6 +20,7 @@ input_string= open("input.txt").read()
 lines = input_string.split()
 grid = [list(line) for line in lines]
 
+### FUNCTIONS ###
 
 def has_no_neighbours(row,column,grid):
     n_range = 1
@@ -141,19 +156,14 @@ old_grid = apply_rules(grid)
 
 while True:
 
-    #new_grid = apply_rules(old_grid)
-    new_grid = apply_part_two_rules(old_grid)
-    print()
-    print_grid(new_grid)
+    new_grid = apply_rules(old_grid) # <---------------- executes PART I
+    #new_grid = apply_part_two_rules(old_grid) # <------ uncomment for PART II, also comment the line above
+    #print()
+    #print_grid(new_grid)
     if new_grid == old_grid: break
 
     old_grid = deepcopy(new_grid)
 print()
 occupied_seats = count_occupied_seats(new_grid)
 
-
-#print_grid(grid)
-#print()
-#print_grid(new_grid)
-#print()
 print(occupied_seats)

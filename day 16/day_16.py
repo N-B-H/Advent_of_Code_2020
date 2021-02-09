@@ -1,5 +1,15 @@
+'''
+
+Advent of Code 2020
+
+--- Day 16: Ticket Translation --- see https://adventofcode.com/2020/day/16
+
+Status: Solved
+Agenda: ?
+
+'''
+
 from merge_ranges import merge_ranges
-from copy import deepcopy
 
 input_string = open("input.txt","r").read()
 #input_string = open("example2.txt","r").read()
@@ -41,7 +51,7 @@ def is_invalid(value_or_ticket, rules):
     elif isinstance(value_or_ticket, list):
         ticket = value_or_ticket
         for value in ticket:
-            if is_invalid(value,rules): return True
+            if is_invalid(value,rules): return True  # only one invalid element makes the list invalid
         return False
 
 #Part 2
@@ -134,37 +144,37 @@ def parse_my_ticket(input_string,fields):
     return {fields[n]:my_values[n] for n in range(len(my_values))}
 
 
-print("PART ONE\n")
+print("\nPART I")
 
 parsed_rules, merged_rules = parse_all_ranges(input_string)
-print("RULES: ", parsed_rules)
-print("MERGED: ", merged_rules)
+#print("Rules: ", parsed_rules)
+#print("Merged Rules: ", merged_rules)
 
 all_values = parse_all_values(input_string)
 invalids = get_invalids(all_values, merged_rules)
-print("ALL VALUES: ", all_values)
-print("INVALID VALUES: ", invalids)
-print("SUM: ", sum(invalids))
+#print("All Values: ", all_values)
+print("Invalid Values: ", invalids)
+print("Sum: ", sum(invalids))
 
-print("\nPART TWO\n")
+print("\nPART II")
 
 parsed_tickets = parse_tickets(input_string)
-valid_tickets = get_valid_tickets(parsed_tickets,merged_rules)
-print("PARSED TICKETS: \n",parsed_tickets)
-print("VALID TICKETS: \n", valid_tickets)
+valid_tickets = get_valid_tickets(parsed_tickets, merged_rules)
+#print("Parsed Tickets: \n", parsed_tickets)
+#print("Valid Tickets: \n", valid_tickets)
 
 parsed_rules = parse_rules(input_string)
-print("PARSED RULES: \n", parsed_rules)
+#print("Parsed Rules: \n", parsed_rules)
 
-fields = allocate_fields(valid_tickets,parsed_rules)
-print("FIELDS: \n", fields)
+fields = allocate_fields(valid_tickets, parsed_rules)
+#print("Fields: \n", fields)
 
-my_ticket = parse_my_ticket(input_string,fields)
+my_ticket = parse_my_ticket(input_string, fields)
 
-print("MY TICKET:\n", my_ticket)
+print("My Ticket:\n", my_ticket)
 
 dep_product = 1
 for key in my_ticket.keys():
     if "departure" in key: dep_product *= my_ticket[key]
 
-print("RESULT:\n", dep_product)
+print("\nSum of 'Departure' fields:\n", dep_product)

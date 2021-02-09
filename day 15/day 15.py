@@ -1,7 +1,19 @@
+'''
+
+Advent of Code 2020
+
+--- Day 15: Rambunctious Recitation --- see https://adventofcode.com/2020/day/15
+
+Status: PART I Solved, PART II functional, but too slow with 27.xx seconds..
+Agenda: Efficiency for PART II, mathematical solution?
+
+'''
+
 from copy import deepcopy
 from collections import deque
 #import queue
 import time
+
 input_list = [16,11,15,0,1,7]
 
 example = [
@@ -16,11 +28,8 @@ example = [
 #starting_numbers = example[0] #input_list
 #starting_numbers = input_list
 
-n = 2020
-
 
 start_time = time.time()
-#print(start_time)
 
 def nth_call(n,starting_numbers):
     if n < len(starting_numbers): return starting_numbers[n]
@@ -89,9 +98,13 @@ def print_first_20_of_examples(example):
 
 
 starting_numbers = deepcopy(input_list)
+n1 = 2020
+n2 = 30000000
 
-n = 30000000
-print("Starting Numbers: ", starting_numbers)
-print(f"The {n}th number is: ", nth_call(n,starting_numbers))
+print("\nStarting Numbers: ", starting_numbers)
+print("\nPART I")
+print(f"The {n1}th number is: ", nth_call(n1,starting_numbers))
+print("\nPART II")
+print(f"The {n2}th number is: ", nth_call(n2,starting_numbers))
 end_time = time.time()-start_time
-print("Duration: ", end_time, "Seconds")
+print("\nDuration: ", end_time, "Seconds")

@@ -1,3 +1,13 @@
+'''
+
+Advent of Code 2020
+
+--- Day 8: Handheld Halting --- see https://adventofcode.com/2020/day/8
+
+Status: Solved
+Agenda: ?
+
+'''
 from copy import deepcopy
 ###
 ### INPUT
@@ -12,7 +22,7 @@ def find_loop(command_lines):
     acc = 0
     i = 0
 
-    while not i in executed_lines:
+    while i not in executed_lines:
 
         executed_lines.add(i)
         command, argument = command_lines[i].split()
@@ -58,15 +68,17 @@ def find_wrong_line(command_lines):
         if not has_loop:
             return i, acc
 
-    return 0,0
+    return 0, 0
 
 lines = input_string.split('\n')
 
 has_loop, acc = find_loop(lines)
 
-print("Has Loop =", has_loop)
-print("acc=",acc)
+
+print("\nPart One:")
+print("Commands have a loop:", has_loop) # =True...
+print("acc =", acc)
 
 wrong_line, acc = find_wrong_line(lines)
 
-print(f"Line {wrong_line} has to be altered. Acc at the end is then: {acc}")
+print(f"\nPart Two:\nLine {wrong_line} has to be altered. Acc at the end is then: {acc}")

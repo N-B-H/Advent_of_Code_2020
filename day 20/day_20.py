@@ -1,3 +1,19 @@
+'''
+
+Advent of Code 2020
+
+--- Day 20: Jurassic Jigsaw --- see https://adventofcode.com/2020/day/20
+
+Status: unsolved
+-finding possible neighbours, that have an identical edge: check
+
+Agenda: find an efficient way to try and validate different arrangements of the tiles
+recursive? combinations of tiles as a tree? ...
+
+'''
+
+
+
 from copy import deepcopy
 
 input_string = open("example.txt","r").read()
@@ -34,7 +50,7 @@ def parse_tiles(input_string):
 
     return tiles
 
-def rotate_90_right(tile,*times):
+def rotate_90_right(tile):
     return list(zip(*reversed(tile)))
 
 def flip_horizontal(tile):
@@ -43,6 +59,7 @@ def flip_horizontal(tile):
 def flip_vertical(tile):
     return [reversed(row) for row in tile]
 
+# extract all edges of a tile
 def get_edges(tile):
 
     edges = []
@@ -63,6 +80,7 @@ def get_edges(tile):
 
     return edges
 
+# get all possible neighbours of a tile that have one edge in common
 def get_neighbours(tiles):
     neighbours = {key: set() for key in tiles.keys()}
 
@@ -87,7 +105,9 @@ def fewest_neighbours(neighbours):
     return sorted(neighbours.items(), key = lambda item: len(item[1]))
 
 
-def is_valid_next_tile(cur_pos = Vec(0,0), next_pos = Vec(0,0), grid, neighbours):
+# the functions below are not yet functional...
+
+def is_valid_next_tile(grid, neighbours, cur_pos=Vec(0,0), next_pos=Vec(0, 0)):
     if not grid[cur_pos.y][cur_pos.x] in neighbours: return None
     if grid[next_pos.y][next_pos.x] in neighbours[grid[cur_pos.y][cur_pos.x]]: return True
     else: return False

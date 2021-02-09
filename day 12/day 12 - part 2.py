@@ -1,3 +1,16 @@
+'''
+
+Advent of Code 2020
+
+--- Day 12: Rain Risk --- see https://adventofcode.com/2020/day/12
+
+--- PART II ---
+
+Status: Solved
+Agenda: ?
+
+'''
+
 input_string = open("input.txt","r").read()
 input_lines = [line for line in input_string.split()]
 

@@ -1,3 +1,14 @@
+'''
+
+Advent of Code 2020
+
+--- Day 13: Shuttle Search --- see https://adventofcode.com/2020/day/13
+
+Status: PART I Solved, PART II far too slow. Only works in theory or on a faster computer
+Agenda: Efficiency for PART II, any neat mathematical solution???
+
+'''
+
 input_string = open("input.txt","r").read()
 
 lines = [line for line in input_string.split()]

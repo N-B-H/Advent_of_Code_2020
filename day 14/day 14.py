@@ -1,4 +1,14 @@
-### Bitwise Fun
+'''
+
+Advent of Code 2020
+
+--- Day 14: Docking Data --- see https://adventofcode.com/2020/day/14
+
+Status: Unsolved
+Agenda: Get into the Bitwise operation fun + libraries etc.
+
+'''
+
 
 input_string = open("example.txt","r").read()
 

@@ -1,12 +1,21 @@
-input_file = open("day_5_input.txt", "r").read()
+'''
 
-input_list = input_file.split()
+Advent of Code 2020
 
-print(input_list)
+--- Day 5: Binary Boarding --- see https://adventofcode.com/2020/day/5
+
+Status: Solved
+
+'''
+
+input_list = open("input.txt", "r").read().split()
 
 example = "BBFFBBFRLL"
 
-print(example)
+#print(input_list)
+
+
+#print(example)
 
 def decrypt_code(code):
 
@@ -52,24 +61,24 @@ def find_gap_in_IDs(seat_list):
     for i in range(len(seat_list)): #list_by_ID = sorted(seat_list, key=lambda x: x[2])
         if seat_list[i][2] == i: continue
         else:
-            print("BINGO! It\'s", seat_list[i])
+            print("\nBINGO! It\'s", seat_list[i])
             return seat_list[i]
 
  #   for i in range(len(list_by_ID)):
    #     if not list_by_ID[3][i] == None
 
 #decrypt example
-print(f"example \"{example}\":\n",decrypt_code(example))
+print(f"\nexample \"{example}\":\n",decrypt_code(example))
 
 #decrypt all data
 decrypted_list = [decrypt_code(input_list[i]) for i in range(len(input_list))]
-print("whole data:\n", decrypted_list)
+print("\nwhole data:\n", decrypted_list)
 
 highest_ID = find_highest_Seat_ID(decrypted_list)
-print("highest ID: \n", highest_ID)
+print("\nPuzzle Solution Part One - Highest ID:", highest_ID)
 
 missing_seats = find_missing_seats(decrypted_list)
-print("missing seats: \n",missing_seats)
+print("\nmissing seats: \n", missing_seats)
 
 my_seat = find_gap_in_IDs(missing_seats)
-print("my seat is: \n", my_seat)
+print("\nPuzzle Solution Part Two - My seat ID is:", my_seat[2])

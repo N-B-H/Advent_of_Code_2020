@@ -1,41 +1,39 @@
+'''
+
+Advent of Code 2020
+
+--- Day 6: Custom Customs --- see https://adventofcode.com/2020/day/6
+
+Status: Solved
+Agenda: Regular Expressions?
+
+'''
+
+
 import string
 
 ###
 ### INPUT
 ###
 input_string = open("day_6_input.txt","r").read()
-example = '''abc
-
-a
-b
-c
-
-ab
-ac
-
-a
-a
-a
-a
-
-b'''
-#input_string = example
+#example = open("example.txt", "r").read()
 
 
 ###
 ### FUNCTIONS
 ###
 
-#   count number of different characters that appear in ONE group
+#   count number of different characters that appear in one group
 def count_number_of_different_characters(group_string):
     occurred_chars = set()
     for i in group_string:
-        if i in string.ascii_letters and not i in occurred_chars: occurred_chars.add(i)
+        if i in string.ascii_letters and i not in occurred_chars: occurred_chars.add(i)
 
     #print(occurred_chars)
     return len(occurred_chars)
 
-#   count number of different characters that appear in every line of ONE group
+
+#   count number of different characters that appear in EVERY line of one group
 #   (=all persons of that group crossed this letter with "yes")
 def count_number_of_all_yes_characters(group_string):
 
@@ -70,15 +68,14 @@ def count_character_appearances(groups):
     return total_count_part_1,total_count_part_2
 
 ###
-### ACTUAL PROGRAMM
+### MAIN PROGRAMM
 ###
 
 # split input_string into list of groups
 groups = input_string.split('\n\n')
 
-# print groups
-#for i in groups: print(i, "\n-")
 
 # PRINT RESULTS
-print(count_character_appearances(groups))
+print("Part One:", count_character_appearances(groups)[0])
+print("Part Two:", count_character_appearances(groups)[1])
 

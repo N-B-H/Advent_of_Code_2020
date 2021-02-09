@@ -1,3 +1,17 @@
+'''
+
+Advent of Code 2020
+
+--- Day 7: Handy Haversacks --- see https://adventofcode.com/2020/day/7
+
+---Part Two---
+
+Status: Work in Progress
+
+Agenda: Data Structure Cleanup (List-> Sets?)
+
+'''
+
 import string
 from copy import deepcopy
 
@@ -60,12 +74,12 @@ def input_to_set_of_bags(input_string):
             # --->"vibrant plum", {"faded blue": 5, "dotted black": 6}
         content_dict = {}
         for entry_str in content_list_of_str:
-            entry_number = entry_str[0] # number is just the first charachter
-            entry_color = entry_str.replace(string.digits,'').strip() # remove number and whitespace. only color left
+            entry_number = entry_str[0]  # number is just the first charachter
+            entry_color = entry_str.replace(string.digits, '').strip()  # remove number and whitespace. only color left
             content_dict[entry_color] = entry_number #add to dictionary
 
         # add content dictionary of current outer_color to the set of bags
-        set_of_bags.add(bag(outer_color,content_dict)
+        set_of_bags.add(bag(outer_color, content_dict))
 
     return set_of_bags
 

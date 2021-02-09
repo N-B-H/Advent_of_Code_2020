@@ -1,3 +1,14 @@
+'''
+
+Advent of Code 2020
+
+--- Day 22: Crab Combat --- see https://adventofcode.com/2020/day/22
+
+Status: PART I solved, PART II work in progress
+Agenda: debug recursive_combat function
+
+'''
+
 input_string = open("example.txt", "r").read()
 #input_string = open("input.txt", "r").read()
 
@@ -6,12 +17,15 @@ from copy import deepcopy
 
 raw_players = input_string.split("\n\n")
 player = [None] * 2
-for i in (0,1):
+for i in 0, 1:
     player[i] = deque([int(i) for i in raw_players[i].split(":\n")[1].split()])
+
 #player_2 = deque([int(i) for i in raw_players[1].split(":\n")[1].split()])
 
 deck = deepcopy(player)
-print(player[0], player[1], sep="\n")
+print("Part I ", "Starting with the following decks:", sep="\n")
+print("Player 1", list(player[0]))
+print("Player 2", list(player[1]))
 
 def combat(deck):
 
@@ -36,7 +50,10 @@ def combat(deck):
 
 winner, i_winner = combat(player)
 
-print(player[0], player[1], sep="\n")
+print("\nResulting in:")
+print("Player 1", list(player[0]))
+print("Player 2", list(player[1]))
+
 
 def get_score(winner):
     score = 0
@@ -47,7 +64,7 @@ def get_score(winner):
 
     return score
 
-print(get_score(winner))
+print("\nScore: ", get_score(winner))
 
 ### PART TWO ###
 
@@ -77,6 +94,7 @@ def recursive_combat(deck):
     return recursive_combat(deck)
 
 round = 0
+print("\nPART II")
 print(deck)
 winner, deck = recursive_combat(deck)
 print(winner)

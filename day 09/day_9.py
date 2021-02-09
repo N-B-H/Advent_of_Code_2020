@@ -1,3 +1,14 @@
+'''
+
+Advent of Code 2020
+
+--- Day 9: Encoding Error --- see https://adventofcode.com/2020/day/9
+
+Status: Solved
+Agenda: More elegant/efficient Solution?
+
+'''
+
 ###
 ### INPUT
 ###
@@ -54,7 +65,7 @@ def find_list_of_summands(num,possible_summands):
 
 first_wrong_line, first_wrong_number = get_first_wrong_number(input_list,preamble_length)
 
-print("PART 1:")
+print("\nPART 1:")
 print("First wrong line: ", first_wrong_line)
 print("Number: ", first_wrong_number)
 
@@ -64,7 +75,7 @@ list_of_summands = find_list_of_summands(first_wrong_number, input_list[:first_w
 smallest_summand, largest_summand = min(list_of_summands), max(list_of_summands)
 result = smallest_summand + largest_summand
 
-print("PART 2:")
+print("\nPART 2:")
 print("The summands for the above number are: ", list_of_summands)
 print(f"The smallest and largest of these summands are: {smallest_summand} and {largest_summand}")
 print("They add up to: ", result)
